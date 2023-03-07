@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIC TAC TOE2</title>
+</head>
+
+<body>
+    <div id="gameContainer">
+        <h1>TIC TAC TOE</h1>
+        <div id="cellContainer">
+            <div cellIndex="0" class="cell" id="cell1"></div>
+            <div cellIndex="1" class="cell" id="cell2"></div>
+            <div cellIndex="2" class="cell" id="cell3"></div>
+            <div cellIndex="3" class="cell" id="cell4"></div>
+            <div cellIndex="4" class="cell" id="cell5"></div>
+            <div cellIndex="5" class="cell" id="cell6"></div>
+            <div cellIndex="6" class="cell" id="cell7"></div>
+            <div cellIndex="7" class="cell" id="cell8"></div>
+            <div cellIndex="8" class="cell" id="cell9"></div>
+        </div>
+        <h2 id="statusText"></h2>
+        <button id="restartBtn">RESTART</button>
+    </div>
+    <style>
+
+        body{
+            background-color: grey;
+        }
+        .cell {
+            width: 75px;
+            height: 75px;
+            border: 2px solid;
+            box-shadow: 0 0 0 2px;
+            line-height: 75px;
+            font-size: 50px;
+            cursor: pointer;
+        }
+
+        #gameContainer {
+            font-family: cursive;
+            text-align: center;
+        }
+
+        #restartBtn {
+            font-family: cursive;
+        }
+
+        #cellContainer {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            width: 225px;
+            margin: auto;
+        }
+    </style>
+
+    <script>
+
+        let currentPlayer = "X";
+        const restartBtn = document.querySelector("#restartBtn");
+        const cell1 = document.querySelector("#cell1");
+        const cell2 = document.querySelector("#cell2");
+        const cell3 = document.querySelector("#cell3");
+        const cell4 = document.querySelector("#cell4");
+        const cell5 = document.querySelector("#cell5");
+        const cell6 = document.querySelector("#cell6");
+        const cell7 = document.querySelector("#cell7");
+        const cell8 = document.querySelector("#cell8");
+        const cell9 = document.querySelector("#cell9");
+        const statusText = document.querySelector("#statusText");
+        const cells = document.querySelectorAll(".cell");
+
+        restart();
+        
+        cells.forEach(cell => cell.addEventListener("click", (e) => {
+            checkWinner();
+            changePlayer();
+            e.target.innerText = currentPlayer;
+        }));
+
+        function changePlayer() {
+            currentPlayer = currentPlayer == "X" ? "O" : "X";
+            statusText.textContent = `${currentPlayer}'s Turn`;
+        }
+
+        function checkWinner() {
+            if (cell1.textContent == "X" && cell2.textContent == "X" && cell3.textContent == "X") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell1.textContent == "O" && cell2.textContent == "O" && cell3.textContent == "O") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+
+            else if (cell1.textContent == "O" && cell4.textContent == "O" && cell7.textContent == "O") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell1.textContent == "X" && cell4.textContent == "X" && cell7.textContent == "X") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+
+            else if (cell2.textContent == "X" && cell5.textContent == "X" && cell8.textContent == "X") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell2.textContent == "O" && cell5.textContent == "O" && cell8.textContent == "O") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+
+            else if (cell3.textContent == "O" && cell6.textContent == "O" && cell9.textContent == "O") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell3.textContent == "X" && cell6.textContent == "X" && cell9.textContent == "X") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell1.textContent == "O" && cell5.textContent == "O" && cell9.textContent == "O") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell1.textContent == "X" && cell5.textContent == "X" && cell9.textContent == "X") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+
+            else if (cell3.textContent == "X" && cell5.textContent == "X" && cell7.textContent == "X") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell3.textContent == "O" && cell5.textContent == "O" && cell7.textContent == "O") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell4.textContent == "O" && cell5.textContent == "O" && cell6.textContent == "O") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell4.textContent == "X" && cell5.textContent == "X" && cell6.textContent == "X") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+
+            else if (cell7.textContent == "O" && cell8.textContent == "O" && cell9.textContent == "O") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            else if (cell7.textContent == "X" && cell8.textContent == "X" && cell9.textContent == "X") {
+                window.alert(`${currentPlayer} WINS`);
+                reload()
+            }
+            
+        }
+
+        function restart() {
+            restartBtn.addEventListener("click", function () {
+                cell1.textContent = "";
+                cell2.textContent = "";
+                cell3.textContent = "";
+                cell4.textContent = "";
+                cell5.textContent = "";
+                cell6.textContent = "";
+                cell7.textContent = "";
+                cell8.textContent = "";
+                cell9.textContent = "";
+            })
+        }
+
+        function reload() {
+            location.reload()
+        }
+
+        
+
+        // ITS FINALLY WORKING BUT ITS A BIT FAULTY //
+        // IT DOESNT HAVE DRAW OPTION SORRY!!
+
+    </script>
